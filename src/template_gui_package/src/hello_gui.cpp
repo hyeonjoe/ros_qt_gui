@@ -242,6 +242,13 @@ void HelloGui::readSerialData() {
                 realDataList.append(data);
             }
         }
+
+        if (realDataList.size() >= 3) {
+                    QString thirdLastItem = realDataList.at(realDataList.size() - 3);
+                    qDebug() << "Third last item:" << thirdLastItem;
+                } else {
+                    qDebug() << "Not enough data to extract the third last item.";
+                }
 //        if (!realDataList.isEmpty()) {
 //            QString bmsData = realDataList.last();
 //            int bms = bmsData.toInt() / 10;
