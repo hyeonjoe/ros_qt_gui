@@ -242,13 +242,13 @@ void HelloGui::readSerialData() {
                 realDataList.append(data);
             }
         }
-        if (!realDataList.isEmpty()) {
-            QString bmsData = realDataList.last();
-            int bms = bmsData.toInt() / 10;
-            qDebug() << "Battery:" << bms;
-            bms_msg.percentage = static_cast<float>(bms) / 100.0f;
-            bms_pub.publish(bms_msg);
-        }
+//        if (!realDataList.isEmpty()) {
+//            QString bmsData = realDataList.last();
+//            int bms = bmsData.toInt() / 10;
+//            qDebug() << "Battery:" << bms;
+//            bms_msg.percentage = static_cast<float>(bms) / 100.0f;
+//            bms_pub.publish(bms_msg);
+//        }
     }
 }
 

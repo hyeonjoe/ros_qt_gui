@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2024-05-17T17:38:14. -->
+<!-- Written by QtCreator 4.9.2, 2024-05-17T18:07:22. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -106,8 +106,9 @@
      <value type="QString">LD_LIBRARY_PATH=/home/keti2/demo_ui/devel/lib:/opt/ros/noetic/lib:/opt/ros/noetic/lib/x86_64-linux-gnu:/usr/local/cuda-11.7/lib64{LD_LIBRARY_PATH:+:}</value>
      <value type="QString">PATH=/opt/ros/noetic/bin:/home/keti2/anaconda3/bin:/home/keti2/anaconda3/condabin:/usr/local/cuda-11.7/bin:/home/keti2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
      <value type="QString">PKG_CONFIG_PATH=/home/keti2/demo_ui/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig</value>
+     <value type="QString">PWD=/home/keti2/demo_ui</value>
      <value type="QString">ROS_PACKAGE_PATH=/home/keti2/demo_ui/src:/opt/ros/noetic/share</value>
-     <value type="QString">SHLVL=3</value>
+     <value type="QString">SHLVL=5</value>
      <value type="QString">TERM=xterm</value>
      <value type="QString">_=/usr/bin/env</value>
     </valuelist>
