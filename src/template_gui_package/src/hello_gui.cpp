@@ -156,34 +156,86 @@ void HelloGui::on_BMS_ON_clicked()
     qDebug() << "BMS ON";
 
     BMS_ST=true;
-
-
-
-
     ser_message = QByteArray::fromHex("6C");
-    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+    rcvmsg=serial->readLine();
+
+
 
     ser_message = QByteArray::fromHex("20");
-    serial->write(ser_message);
+//    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+//    rcvmsg=serial->readLine();
+
 
     ser_message = QByteArray::fromHex("32");//30+sec
-    serial->write(ser_message);
+//    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+//    rcvmsg=serial->readLine();
+
 
     ser_message = QByteArray::fromHex("0A");
-    serial->write(ser_message);
+//    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+//    rcvmsg=serial->readLine();
+
+
 
     ser_message = QByteArray::fromHex("0D");
-    serial->write(ser_message);
-
+//    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
     qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+    rcvmsg=serial->readLine();
 
-    delay_timer->start(2000);
+//    delay_timer->start(2000);
 
     bms_ready=true;
 
 
-//    bms_msg.percentage = 1;//float32 Charge percentage on 0 to 1 range  (If unmeasured NaN)
-//    bms_pub.publish(mod_msg);
 
 }
 
@@ -191,30 +243,65 @@ void HelloGui::on_BMS_OFF_clicked()
 {
     qDebug() << "BMS OFF";
     ser_message = QByteArray::fromHex("6C");
-    serial->write(ser_message);
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
+
 
     ser_message = QByteArray::fromHex("20");
-    serial->write(ser_message);
-
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
     ser_message = QByteArray::fromHex("30");//30+sec
-    serial->write(ser_message);
-
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
     ser_message = QByteArray::fromHex("0A");
-    serial->write(ser_message);
-
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
     ser_message = QByteArray::fromHex("0D");
-    serial->write(ser_message);
-
+    rawdata = ser_message.constData();
+    serial->write(rawdata,ser_message.size());
+    qDebug() << "Sent:" << ser_message;
+    if (serial->waitForReadyRead(1000)){
+        rcvmsg=serial->readLine();
+        qDebug() << "received:" << rcvmsg;
+    }
+    else{
+        qDebug() << "nothing received:" ;
+    }
 //    delay_timer->start(2000);
 
     bms_ready=false;
-
-
-
-
-
-
-    qDebug() << "Sent:" << ser_message;
 }
 
 void HelloGui::on_BMS_INIT_clicked()
@@ -230,11 +317,11 @@ void HelloGui::on_BMS_INIT_clicked()
 }
 
 void HelloGui::readSerialData() {
-    if (BMS_ST && bms_ready && serial->canReadLine()) {  // ON 상태일 때만 데이터 읽기
+    if (BMS_ST && bms_ready && serial->canReadLine()) {
         QByteArray data = serial->readLine().trimmed();
         qDebug() << "Received:" << data;
 
-        // 데이터 처리 로직 추가
+
         QStringList receivedDataList = QString(data).split(" ");
         QList<QString> realDataList;
         for (const QString &data : receivedDataList) {
@@ -246,16 +333,15 @@ void HelloGui::readSerialData() {
         if (realDataList.size() >= 3) {
                     QString thirdLastItem = realDataList.at(realDataList.size() - 3);
                     qDebug() << "Third last item:" << thirdLastItem;
+                    float battery_charge = thirdLastItem.toFloat() / 1000;
+                    qDebug()<<battery_charge;
+                    bms_msg.percentage = static_cast<float>(battery_charge);
+                    bms_pub.publish(bms_msg);
+
                 } else {
                     qDebug() << "Not enough data to extract the third last item.";
                 }
-//        if (!realDataList.isEmpty()) {
-//            QString bmsData = realDataList.last();
-//            int bms = bmsData.toInt() / 10;
-//            qDebug() << "Battery:" << bms;
-//            bms_msg.percentage = static_cast<float>(bms) / 100.0f;
-//            bms_pub.publish(bms_msg);
-//        }
+
     }
 }
 

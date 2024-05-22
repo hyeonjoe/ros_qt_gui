@@ -30,7 +30,11 @@ public:
     sensor_msgs::Joy cmd_msg;
     std_msgs::String mod_msg;
     sensor_msgs::BatteryState bms_msg;
+
     QByteArray ser_message;
+    QByteArray rcvmsg;
+    const char* rawdata;
+
 private slots:
     void spinOnce();//
 
